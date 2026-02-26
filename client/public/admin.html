@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Jobszim</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        table { width:100%; border-collapse: collapse; margin:1rem 0; }
+        th, td { border:1px solid #ddd; padding:8px; text-align:left; }
+        th { background-color: var(--primary); color:white; }
+        .blocked { background-color:#ffe6e6; }
+        .admin-badge { background-color:gold; color:black; padding:2px 6px; border-radius:4px; font-size:0.8rem; }
+        button { margin-right:5px; }
+        .admin-links { margin-bottom:1rem; }
+        .admin-links a { margin-right:1rem; color:var(--primary); text-decoration:none; font-weight:bold; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Admin Dashboard</h1>
+        <div class="admin-links">
+            <a href="/">Home</a>
+            <a href="/admin-keys.html">Manage Keys</a>
+            <a href="/admin-jobs.html">Pending Jobs</a>
+            <a href="/admin-all-jobs.html">All Jobs</a>
+            <a href="/admin-analytics.html">Analytics</a>
+        </div>
+    </header>
+    <main>
+        <h2>Manage Users</h2>
+        <div id="users-container"><p>Loading users...</p></div>
+    </main>
+    <script src="/js/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pending Jobs - Jobszim Admin</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        .job-card { background: white; padding:1rem; margin:1rem 0; border-radius:8px; box-shadow:0 2px 4px rgba(0,0,0,0.1); }
+        .job-actions button { margin-right:0.5rem; }
+        .approve-btn { background:#28a745; color:white; border:none; padding:0.3rem 0.8rem; border-radius:4px; cursor:pointer; }
+        .reject-btn { background:#dc3545; color:white; border:none; padding:0.3rem 0.8rem; border-radius:4px; cursor:pointer; }
+        .edit-btn { background:#ffc107; color:black; border:none; padding:0.3rem 0.8rem; border-radius:4px; cursor:pointer; }
+        .admin-links { margin-bottom:1rem; }
+        .admin-links a { margin-right:1rem; color:var(--primary); text-decoration:none; font-weight:bold; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Admin - Pending Jobs</h1>
+        <div class="admin-links">
+            <a href="/">Home</a>
+            <a href="/admin.html">Manage Users</a>
+            <a href="/admin-keys.html">Manage Keys</a>
+            <a href="/admin-analytics.html">Analytics</a>
+            <a href="/admin-all-jobs.html">All Jobs</a>
+        </div>
+    </header>
+    <main>
+        <h2>Jobs Awaiting Approval</h2>
+        <div id="pending-container"><p>Loading...</p></div>
+    </main>
+    <script src="/js/admin-jobs.js"></script>
+</body>
+</html>

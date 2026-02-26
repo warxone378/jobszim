@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jobszim – Zimbabwe Jobs | Find Your Next Career</title>
+    <link rel="canonical" href="https://jobszim.co.zw/">
+    <meta name="author" content="Jobszim">
+    <meta name="keywords" content="Zimbabwe jobs, Harare jobs, Bulawayo jobs, employment Zimbabwe, career opportunities, job search">
+    <meta name="description" content="Jobszim is Zimbabwe's leading job board. Search for jobs in Harare, Bulawayo, and across Zimbabwe. Post jobs, apply online, and get hired.">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="logo-area">
+            <h1>Jobszim</h1>
+            <p>Find your next job in Zimbabwe</p>
+        </div>
+        <div class="hamburger" id="hamburger">
+            <i class="fas fa-bars"></i>
+        </div>
+        <nav id="nav-menu" class="nav-menu">
+            <div id="auth-section"></div>
+        </nav>
+    </header>
+    <main>
+        <section class="intro">
+            <h2>Welcome to Jobszim</h2>
+            <p>Jobszim is the leading job board in Zimbabwe. Employers can post jobs (subject to admin approval) and job seekers can find their dream job.</p>
+        </section>
+        <div id="job-form-container" style="display:none;">
+            <h2>Post a New Job</h2>
+            <form id="job-form">
+                <input type="text" id="title" placeholder="Job Title" required>
+                <input type="text" id="company" placeholder="Company" required>
+                <input type="text" id="location" placeholder="Location" required>
+                <select id="type">
+                    <option value="Full-time">Full-time</option>
+                    <option value="Part-time">Part-time</option>
+                    <option value="Contract">Contract</option>
+                    <option value="Remote">Remote</option>
+                </select>
+                <input type="text" id="salary" placeholder="Salary (e.g. $80k - $100k)">
+                <textarea id="description" placeholder="Job description" required></textarea>
+                <button type="submit">Post Job</button>
+            </form>
+        </div>
+        <div id="jobs-container"></div>
+    </main>
+    <footer style="text-align:center; padding:1rem; background:#333; color:white;">
+        <a href="/privacy.html" style="color:white;">Privacy Policy</a> |
+        <a href="/contact.html" style="color:white;">Contact Us</a> |
+        <a href="/about.html" style="color:white;">About Us</a>
+    </footer>
+    <script src="/js/main.js"></script>
+
+    <!-- Cookie consent banner -->
+    <div id="cookie-consent" style="display:none; position:fixed; bottom:0; left:0; right:0; background:#333; color:white; padding:1rem; text-align:center; z-index:1000;">
+        We use cookies to improve your experience. By continuing, you agree to our use of cookies.
+        <button id="accept-cookies" style="margin-left:1rem; padding:0.3rem 1rem; background:var(--primary); color:white; border:none; border-radius:4px;">Accept</button>
+    </div>
+
+    <script>
+        if (!localStorage.getItem('cookiesAccepted')) {
+            document.getElementById('cookie-consent').style.display = 'block';
+        }
+        document.getElementById('accept-cookies').addEventListener('click', () => {
+            localStorage.setItem('cookiesAccepted', 'true');
+            document.getElementById('cookie-consent').style.display = 'none';
+        });
+    </script>
+</body>
+</html>

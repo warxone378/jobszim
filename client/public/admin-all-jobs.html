@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage All Jobs - Jobszim Admin</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        table { width:100%; border-collapse: collapse; margin:1rem 0; }
+        th, td { border:1px solid #ddd; padding:8px; text-align:left; }
+        th { background-color: var(--primary); color:white; }
+        .status-badge { padding:2px 6px; border-radius:4px; font-size:0.8rem; font-weight:bold; }
+        .status-approved { background-color:#d4edda; color:#155724; }
+        .status-pending { background-color:#fff3cd; color:#856404; }
+        .status-rejected { background-color:#f8d7da; color:#721c24; }
+        .job-actions button { margin-right:0.5rem; margin-bottom:0.25rem; }
+        .edit-btn { background:var(--warning); color:white; border:none; padding:0.3rem 0.6rem; border-radius:4px; cursor:pointer; }
+        .delete-btn { background:var(--danger); color:white; border:none; padding:0.3rem 0.6rem; border-radius:4px; cursor:pointer; }
+        .admin-links { margin-bottom:1rem; }
+        .admin-links a { margin-right:1rem; color:var(--primary); text-decoration:none; font-weight:bold; }
+        .filter-box { margin:1rem 0; display:flex; gap:0.5rem; flex-wrap:wrap; }
+        .filter-box input, .filter-box select { padding:0.5rem; border:1px solid #ddd; border-radius:4px; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Admin - Manage All Jobs</h1>
+        <div class="admin-links">
+            <a href="/">Home</a>
+            <a href="/admin.html">Users</a>
+            <a href="/admin-keys.html">Keys</a>
+            <a href="/admin-jobs.html">Pending Jobs</a>
+        </div>
+    </header>
+    <main>
+        <h2>All Jobs</h2>
+        <div class="filter-box">
+            <input type="text" id="filter-title" placeholder="Filter by title">
+            <select id="filter-status">
+                <option value="">All statuses</option>
+                <option value="approved">Approved</option>
+                <option value="pending">Pending</option>
+                <option value="rejected">Rejected</option>
+            </select>
+            <button id="filter-btn">Filter</button>
+        </div>
+        <div id="jobs-container"><p>Loading jobs...</p></div>
+    </main>
+    <script src="/js/admin-all-jobs.js"></script>
+</body>
+</html>

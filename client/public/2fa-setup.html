@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Setup 2FA - Jobszim</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        .setup-container { max-width:500px; margin:2rem auto; padding:2rem; background:white; border-radius:8px; text-align:center; }
+        .qr-code { margin:2rem 0; }
+        .verify-box { margin-top:2rem; }
+        input { padding:0.8rem; width:200px; text-align:center; font-size:1.2rem; }
+        button { padding:0.8rem 2rem; background:var(--primary); color:white; border:none; border-radius:4px; cursor:pointer; }
+        .message { margin-top:1rem; color:green; }
+        .error { color:red; }
+    </style>
+</head>
+<body>
+    <header><h1>Two-Factor Authentication</h1><nav><a href="/profile.html">Back to Profile</a></nav></header>
+    <main>
+        <div class="setup-container" id="setup-container">
+            <p>Loading...</p>
+        </div>
+    </main>
+    <script src="/js/2fa-setup.js"></script>
+</body>
+</html>

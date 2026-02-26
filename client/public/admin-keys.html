@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Keys - Jobszim Admin</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        table { width:100%; border-collapse: collapse; }
+        th, td { border:1px solid #ddd; padding:8px; text-align:left; }
+        th { background-color: var(--primary); color:white; }
+        .used { background-color:#d4edda; }
+        .expired { background-color:#f8d7da; }
+        .key-value { font-family:monospace; font-size:0.9rem; }
+        .btn-generate { margin-bottom:1rem; padding:0.5rem 1rem; background:var(--success); color:white; border:none; border-radius:4px; cursor:pointer; }
+        .btn-delete { background:var(--danger); color:white; border:none; padding:0.3rem 0.6rem; border-radius:4px; cursor:pointer; }
+        .admin-links { margin-bottom:1rem; }
+        .admin-links a { margin-right:1rem; color:var(--primary); text-decoration:none; font-weight:bold; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Admin - Registration Keys</h1>
+        <div class="admin-links">
+            <a href="/">Home</a>
+            <a href="/admin.html">Manage Users</a>
+        </div>
+    </header>
+    <main>
+        <button id="generate-key" class="btn-generate">Generate New Key</button>
+        <div id="keys-container"><p>Loading keys...</p></div>
+    </main>
+    <script src="/js/admin-keys.js"></script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics - Jobszim Admin</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 2rem 0; }
+        .stat-card { background: white; border-radius: 8px; padding: 1.5rem; box-shadow: 0 2px 4px rgba(0,0,0,0.1); text-align: center; }
+        .charts { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem; }
+        canvas { max-height: 300px; }
+        .admin-links { margin-bottom: 1rem; }
+        .admin-links a { margin-right: 1rem; color: var(--primary); text-decoration: none; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Admin Analytics</h1>
+        <div class="admin-links">
+            <a href="/">Home</a>
+            <a href="/admin.html">Manage Users</a>
+            <a href="/admin-keys.html">Manage Keys</a>
+            <a href="/admin-jobs.html">Pending Jobs</a>
+            <a href="/admin-all-jobs.html">All Jobs</a>
+        </div>
+    </header>
+    <main>
+        <div class="stats-grid" id="stats-container"></div>
+        <div class="charts">
+            <canvas id="jobsChart"></canvas>
+            <canvas id="applicationsChart"></canvas>
+        </div>
+    </main>
+    <script src="/js/admin-analytics.js"></script>
+</body>
+</html>

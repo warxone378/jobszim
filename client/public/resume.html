@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Resume - Jobszim</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        .resume-form { max-width:600px; margin:2rem auto; padding:2rem; background:white; border-radius:8px; }
+        .form-group { margin-bottom:1rem; }
+        label { display:block; font-weight:bold; margin-bottom:0.5rem; }
+        input, textarea { width:100%; padding:0.8rem; border:1px solid #ddd; border-radius:4px; }
+        textarea { min-height:100px; }
+        .section { border-top:2px solid var(--primary); margin-top:2rem; padding-top:1rem; }
+        .add-btn { background:var(--success); color:white; border:none; padding:0.5rem 1rem; border-radius:4px; cursor:pointer; }
+        .remove-btn { background:var(--danger); color:white; border:none; padding:0.2rem 0.5rem; border-radius:4px; cursor:pointer; }
+    </style>
+</head>
+<body>
+    <header><h1>My Resume</h1><nav><a href="/">Home</a></nav></header>
+    <main>
+        <div class="resume-form">
+            <form id="resumeForm">
+                <h2>Personal Info</h2>
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" id="full_name" required>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label>Phone</label>
+                    <input type="text" id="phone">
+                </div>
+                <div class="form-group">
+                    <label>Address</label>
+                    <input type="text" id="address">
+                </div>
+
+                <div class="section">
+                    <h2>Education <button type="button" class="add-btn" id="addEducation">+ Add</button></h2>
+                    <div id="educationContainer"></div>
+                </div>
+
+                <div class="section">
+                    <h2>Experience <button type="button" class="add-btn" id="addExperience">+ Add</button></h2>
+                    <div id="experienceContainer"></div>
+                </div>
+
+                <div class="section">
+                    <h2>Skills</h2>
+                    <div class="form-group">
+                        <textarea id="skills" placeholder="List your skills (comma separated)"></textarea>
+                    </div>
+                </div>
+
+                <button type="submit">Save Resume</button>
+            </form>
+        </div>
+    </main>
+    <script src="/js/resume.js"></script>
+</body>
+</html>

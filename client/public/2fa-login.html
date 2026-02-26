@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>2FA Verification - Jobszim</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        .verify-container { max-width:400px; margin:2rem auto; padding:2rem; background:white; border-radius:8px; text-align:center; }
+        input { padding:0.8rem; width:200px; text-align:center; font-size:1.2rem; margin-bottom:1rem; }
+        button { padding:0.8rem 2rem; background:var(--primary); color:white; border:none; border-radius:4px; cursor:pointer; }
+        .error { color:red; margin-top:1rem; }
+    </style>
+</head>
+<body>
+    <header><h1>Two-Factor Authentication</h1><nav><a href="/login.html">Back to Login</a></nav></header>
+    <main>
+        <div class="verify-container">
+            <h2>Enter Verification Code</h2>
+            <p>Open your authenticator app and enter the 6-digit code.</p>
+            <input type="text" id="token" placeholder="000000" maxlength="6">
+            <button id="verify-btn">Verify</button>
+            <div id="errorMsg" class="error"></div>
+        </div>
+    </main>
+    <script src="/js/2fa-login.js"></script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Recommended Jobs - Jobszim</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header><h1>Recommended For You</h1><nav><a href="/">Home</a></nav></header>
+    <main id="jobs-container"></main>
+    <script>
+        fetch('/api/jobs/recommendations')
+            .then(res => res.json())
+            .then(jobs => {
+                const container = document.getElementById('jobs-container');
+                if (jobs.length === 0) {
+                    container.innerHTML = '<p>No recommendations yet. Save or apply to some jobs to get personalized recommendations.</p>';
+                    return;
+                }
+                let html = '';
+                jobs.forEach(job => {
+                    html += `
+                        <div class="job-card">
+                            <h2><a href="/job/${job.id}">${job.title}</a></h2>
+                            <p>${job.company} - ${job.location}</p>
+                            <p>${job.type} | ${job.salary}</p>
+                            <p>${job.description.substring(0,100)}...</p>
+                        </div>
+                    `;
+                });
+                container.innerHTML = html;
+            });
+    </script>
+</body>
+</html>

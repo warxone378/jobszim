@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Company Profile - Jobszim</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        .edit-form { max-width:600px; margin:2rem auto; padding:2rem; background:white; border-radius:8px; }
+        .form-group { margin-bottom:1rem; }
+        label { display:block; font-weight:bold; margin-bottom:0.5rem; }
+        input, textarea { width:100%; padding:0.8rem; border:1px solid #ddd; border-radius:4px; }
+        textarea { min-height:150px; }
+        button { padding:1rem 2rem; background:var(--primary); color:white; border:none; border-radius:4px; cursor:pointer; }
+        .logo-preview { max-width:100px; margin:1rem 0; }
+    </style>
+</head>
+<body>
+    <header><h1>Edit Company Profile</h1><nav><a href="/">Home</a></nav></header>
+    <main>
+        <div class="edit-form">
+            <form id="companyForm" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label>Company Name</label>
+                    <input type="text" id="company_name" required>
+                </div>
+                <div class="form-group">
+                    <label>Company Description</label>
+                    <textarea id="company_description"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Website</label>
+                    <input type="url" id="website">
+                </div>
+                <div class="form-group">
+                    <label>Company Logo</label>
+                    <input type="file" id="logo" accept="image/*">
+                    <img id="logoPreview" class="logo-preview" style="display:none;">
+                </div>
+                <button type="submit">Save</button>
+            </form>
+            <div id="message"></div>
+        </div>
+    </main>
+    <script src="/js/edit-company.js"></script>
+</body>
+</html>
