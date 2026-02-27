@@ -8,7 +8,7 @@ from werkzeug.utils import secure_filename
 
 company_bp = Blueprint('company', __name__, url_prefix='/company')
 
-# Use /tmp for temporary storage on Vercel
+# Use /tmp for temporary storage on Vercel (writable)
 UPLOAD_FOLDER = '/tmp/logos'
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
 
@@ -53,7 +53,6 @@ def edit_company_profile():
             os.makedirs(UPLOAD_FOLDER, exist_ok=True)
             filename = secure_filename(f"user_{current_user.id}_{file.filename}")
             file.save(os.path.join(UPLOAD_FOLDER, filename))
-            # For demo, store only filename (or you could upload to Cloudinary later)
             current_user.company_logo = filename
 
     db.session.commit()
