@@ -25,7 +25,7 @@ def apply(job_id):
 
     cv_filename = None
     if cv_file and allowed_file(cv_file.filename):
-        # Ensure upload folder exists (create at runtime)
+        # Ensure upload folder exists (create at runtime, not at import)
         os.makedirs(UPLOAD_FOLDER, exist_ok=True)
         filename = secure_filename(f"user_{current_user.id}_{cv_file.filename}")
         cv_file.save(os.path.join(UPLOAD_FOLDER, filename))
