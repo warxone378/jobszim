@@ -10,12 +10,22 @@ db = SQLAlchemy()
 login_manager = LoginManager()
 mail = Mail()
 
-# Create the Flask app directly
-app = Flask(__name__, static_folder='../client/public', static_url_path='')
+# Create the Flask app with instance_relative_config=True
+app = Flask(__name__,
+            static_folder='../client/public',
+            static_url_path='',
+            instance_relative_config=True)
+
+# Ensure the instance folder exists
+try:
+    os.makedirs(app.instance_path, exist_ok=True)
+except OSError:
+    pass
 
 # Configuration
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'your-secret-key-change-this')
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'sqlite:///users.db')
+# Use SQLite database inside the instance folder
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(app.instance_path, 'users.db')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # Mail configuration
