@@ -5,13 +5,13 @@ from app.models import job_model
 from app import db
 import os
 from werkzeug.utils import secure_filename
+import cloudinary
+import cloudinary.uploader
 
 company_bp = Blueprint('company', __name__, url_prefix='/company')
 
-UPLOAD_FOLDER = os.path.join(os.path.dirname(__file__), '../../client/public/logos')
-if not os.path.exists(UPLOAD_FOLDER):
-    os.makedirs(UPLOAD_FOLDER)
-
+# Use /tmp for temporary storage on Vercel (writable)
+UPLOAD_FOLDER = '/tmp/logos'
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
 
 def allowed_file(filename):
@@ -41,61 +41,27 @@ def edit_company_profile():
             'website': current_user.website,
             'company_logo': current_user.company_logo
         })
-    # PUT
+    # PUT: update profile
     data = request.form
     current_user.company_name = data.get('company_name', current_user.company_name)
     current_user.company_description = data.get('company_description', current_user.company_description)
     current_user.website = data.get('website', current_user.website)
+
+    # Handle logo upload
     if 'logo' in request.files:
         file = request.files['logo']
         if file and allowed_file(file.filename):
+            # Ensure upload folder exists (create at runtime, not at import)
+            os.makedirs(UPLOAD_FOLDER, exist_ok=True)
             filename = secure_filename(f"user_{current_user.id}_{file.filename}")
             file.save(os.path.join(UPLOAD_FOLDER, filename))
-            current_user.company_logo = filename
+            # Optionally upload to Cloudinary for permanent storage
+            # result = cloudinary.uploader.upload(file)
+            # current_user.company_logo = result['secure_url']
+            current_user.company_logo = filename  # temporary, just for demo
+
     db.session.commit()
     return jsonify({'message': 'Company profile updated'})
-
-@company_bp.route('/<int:user_id>/follow', methods=['POST'])
-@login_required
-def follow_user(user_id):
-    user = User.query.get(user_id)
-    if not user:
-        return jsonify({'error': 'User not found'}), 404
-    if user.id == current_user.id:
-        return jsonify({'error': 'Cannot follow yourself'}), 400
-    if current_user.is_following(user):
-        return jsonify({'error': 'Already following'}), 400
-    current_user.follow(user)
-    db.session.commit()
-    return jsonify({'message': f'Now following {user.username}'})
-
-@company_bp.route('/<int:user_id>/unfollow', methods=['POST'])
-@login_required
-def unfollow_user(user_id):
-    user = User.query.get(user_id)
-    if not user:
-        return jsonify({'error': 'User not found'}), 404
-    if not current_user.is_following(user):
-        return jsonify({'error': 'Not following'}), 400
-    current_user.unfollow(user)
-    db.session.commit()
-    return jsonify({'message': f'Unfollowed {user.username}'})
-
-@company_bp.route('/<int:user_id>/followers', methods=['GET'])
-def get_followers(user_id):
-    user = User.query.get(user_id)
-    if not user:
-        return jsonify({'error': 'User not found'}), 404
-    followers_list = [{'id': u.id, 'username': u.username} for u in user.followers.all()]
-    return jsonify(followers_list)
-
-@company_bp.route('/<int:user_id>/following', methods=['GET'])
-def get_following(user_id):
-    user = User.query.get(user_id)
-    if not user:
-        return jsonify({'error': 'User not found'}), 404
-    following_list = [{'id': u.id, 'username': u.username} for u in user.followed.all()]
-    return jsonify(following_list)
 
 @company_bp.route('/<int:user_id>/follow-status', methods=['GET'])
 @login_required
