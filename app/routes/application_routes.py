@@ -1,4 +1,4 @@
-from flask import Blueprint, request, jsonify, current_app
+from flask import Blueprint, request, jsonify
 from flask_login import login_required, current_user
 from app.models import application, job_model
 import os
@@ -31,8 +31,8 @@ def apply(job_id):
         cv_file.save(os.path.join(UPLOAD_FOLDER, filename))
         cv_filename = filename
 
-    app = application.save_application(job_id, current_user.id, message, cv_filename)
-    return jsonify({'message': 'Application submitted', 'application': app}), 201
+    new_app = application.save_application(job_id, current_user.id, message, cv_filename)
+    return jsonify({'message': 'Application submitted', 'application': new_app}), 201
 
 @application_bp.route('/job/<int:job_id>', methods=['GET'])
 @login_required
@@ -40,7 +40,6 @@ def get_applications_for_job(job_id):
     job = job_model.get_job_by_id(job_id)
     if not job:
         return jsonify({'error': 'Job not found'}), 404
-    # Only job owner or admin can view applications
     if job.get('posted_by') != current_user.id and not current_user.is_admin:
         return jsonify({'error': 'Permission denied'}), 403
     apps = application.get_applications_for_job(job_id)
@@ -69,5 +68,4 @@ def update_status(app_id):
 def admin_all():
     if not current_user.is_admin:
         return jsonify({'error': 'Admin only'}), 403
-    from app.models import application
     return jsonify(application.get_all_applications())
