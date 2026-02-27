@@ -83,4 +83,5 @@ def create_app():
             return send_from_directory(app.static_folder, path)
         return send_from_directory(app.static_folder, 'index.html')
 
-    return app
+    return 
+app = create_app()
