@@ -4,3 +4,5 @@ Flask-Login
 Flask-Mail 
 Flask-SocketIO  
 python-dotenv
+pyotp
+qrcode
