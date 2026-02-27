@@ -1,3 +1,6 @@
-flask
-flask-login
-flask-sqlalchemy
+Flask 
+Flask-SQLAlchemy 
+Flask-Login 
+Flask-Mail 
+Flask-SocketIO  
+python-dotenv
