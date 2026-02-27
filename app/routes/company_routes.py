@@ -1,16 +1,14 @@
-from flask import Blueprint, jsonify, request, current_app
+from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
 from app.models.user import User
 from app.models import job_model
 from app import db
 import os
 from werkzeug.utils import secure_filename
-import cloudinary
-import cloudinary.uploader
 
 company_bp = Blueprint('company', __name__, url_prefix='/company')
 
-# Use /tmp for temporary storage on Vercel (writable)
+# Use /tmp for temporary storage on Vercel
 UPLOAD_FOLDER = '/tmp/logos'
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
 
@@ -41,24 +39,22 @@ def edit_company_profile():
             'website': current_user.website,
             'company_logo': current_user.company_logo
         })
+
     # PUT: update profile
     data = request.form
     current_user.company_name = data.get('company_name', current_user.company_name)
     current_user.company_description = data.get('company_description', current_user.company_description)
     current_user.website = data.get('website', current_user.website)
 
-    # Handle logo upload
+    # Handle logo upload – create directory only when needed
     if 'logo' in request.files:
         file = request.files['logo']
         if file and allowed_file(file.filename):
-            # Ensure upload folder exists (create at runtime, not at import)
             os.makedirs(UPLOAD_FOLDER, exist_ok=True)
             filename = secure_filename(f"user_{current_user.id}_{file.filename}")
             file.save(os.path.join(UPLOAD_FOLDER, filename))
-            # Optionally upload to Cloudinary for permanent storage
-            # result = cloudinary.uploader.upload(file)
-            # current_user.company_logo = result['secure_url']
-            current_user.company_logo = filename  # temporary, just for demo
+            # For demo, store only filename (or you could upload to Cloudinary later)
+            current_user.company_logo = filename
 
     db.session.commit()
     return jsonify({'message': 'Company profile updated'})
