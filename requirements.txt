@@ -6,3 +6,4 @@ Flask-SocketIO
 python-dotenv
 pyotp
 qrcode
+gunicorn
