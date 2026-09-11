@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jobszim – Zimbabwe Jobs | Find Your Next Career</title>
+    <link rel="canonical" href="https://jobszim.co.zw/">
+    <meta name="author" content="Jobszim">
+    <meta name="keywords" content="Zimbabwe jobs, Harare jobs, Bulawayo jobs, employment Zimbabwe, career opportunities, job search">
+    <meta name="description" content="Jobszim is Zimbabwe's leading job board. Search for jobs in Harare, Bulawayo, and across Zimbabwe. Post jobs, apply online, and get hired.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta name="monetag" content="625d3d6ec46cea730d6f8526e16522ff">
+    <script>(function(s){s.dataset.zone='10665488',s.src='https://nap5k.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+    <script src="https://quge5.com/88/tag.min.js" data-zone="215194" async data-cfasync="false"></script>
+    </head>
+    
+    <body>
+     
+    <header>
+           <div class="logo-area">
+            <h1>Jobszim</h1>
+            <p>Find your next job in Zimbabwe</p>
+        </div>
+        <div class="hamburger" id="hamburger">
+            <i class="fas fa-bars"></i>
+        </div>
+        <nav id="nav-menu" class="nav-menu">
+            <div id="auth-section"></div>
+        </nav>
+    </header>
+    
+     <main>
+        <section class="hero">
+            <h2>Search jobs across Zimbabwe</h2>
+            <p>Openings from employers in Harare, Bulawayo, and beyond — every listing is reviewed by our team before it goes live.</p>
+            <div class="hero-links">
+                <a href="#jobs-container" class="hero-link">Browse open roles</a>
+                <a href="/register.html" class="hero-link hero-link-muted">Post a job as an employer</a>
+            </div>
+        </section>
+        <div id="job-form-container" style="display:none;">
+            <h2>Post a New Job</h2>
+            <form id="job-form">
+                <input type="text" id="title" placeholder="Job Title" required>
+                <input type="text" id="company" placeholder="Company" required>
+                <input type="text" id="location" placeholder="Location" required>
+                <select id="type">
+                    <option value="Full-time">Full-time</option>
+                    <option value="Part-time">Part-time</option>
+                    <option value="Contract">Contract</option>
+                    <option value="Remote">Remote</option>
+                </select>
+                <input type="text" id="salary" placeholder="Salary (e.g. $80k - $100k)">
+                <textarea id="description" placeholder="Job description" required></textarea>
+                <button type="submit">Post Job</button>
+            </form>
+        </div>
+        <div id="jobs-container"></div>
+    </main>
+    <footer>
+        <a href="/privacy.html">Privacy Policy</a> |
+        <a href="/contact.html">Contact Us</a> |
+        <a href="/about.html">About Us</a>
+    </footer>
+    <script src="/js/main.js"></script>
+
+    <!-- Cookie consent banner -->
+    <div id="cookie-consent" style="display:none;">
+        We use cookies to improve your experience. By continuing, you agree to our use of cookies.
+        <button id="accept-cookies">Accept</button>
+    </div>
+
+    <script>
+        if (!localStorage.getItem('cookiesAccepted')) {
+            document.getElementById('cookie-consent').style.display = 'block';
+        }
+        document.getElementById('accept-cookies').addEventListener('click', () => {
+            localStorage.setItem('cookiesAccepted', 'true');
+            document.getElementById('cookie-consent').style.display = 'none';
+        });
+    </script>
+
+</body>
+
+</html>
